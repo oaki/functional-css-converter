@@ -1,0 +1,26 @@
+{
+  "name": "functional-css-parser2",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "react-scripts": "1.0.17"
+  },
+  "dependencies": {
+    "css": "^2.2.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "js-beautify": "^1.7.5",
+    "jscs": "^3.0.7",
+    "node-sass": "^4.7.2",
+    "prismjs": "^1.9.0",
+    "react": "^16.2.0",
+    "react-bootstrap-typeahead": "^2.0.2",
+    "react-dom": "^16.2.0"
+  },
+  "scripts": {
+    "build:sass": "node build-sass.js ./resources/sass/_main.scss",
+    "start": "npm run build:sass; PORT=3010 react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
