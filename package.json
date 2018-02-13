@@ -1,8 +1,24 @@
 {
-  "name": "functional-css-parser2",
-  "version": "0.1.0",
-  "private": true,
+  "name": "functional-css-converter",
+  "version": "1.1.0",
+  "description": "Converter for functional CSS",
+  "homepage": "https://gem-css.bincik.sk",
+  "license": "MIT",
+  "author": "Pavol Bincik",
+  "config": {
+    "port": "3030"
+  },
+  "bin": {
+    "fcc_build": "./bin/build",
+    "fcc_start": "./bin/start.js"
+  },
+  "bugs": {
+    "url": "https://github.com/oaki/functional-css-converter/issues"
+  },
   "devDependencies": {
+    "del": "^3.0.0",
+    "path": "^0.12.7",
+    "react-app-rewired": "^1.4.0",
     "react-scripts": "1.0.17"
   },
   "dependencies": {
@@ -14,12 +30,14 @@
     "prismjs": "^1.9.0",
     "react": "^16.2.0",
     "react-bootstrap-typeahead": "^2.0.2",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "shelljs": "^0.7.8"
   },
   "scripts": {
     "build:sass": "node build-sass.js ./resources/sass/_main.scss",
-    "start": "npm run build:sass; PORT=3010 react-scripts start",
-    "build": "react-scripts build",
+    "start:build-sass": "npm run build:sass; PORT=3010 react-scripts start",
+    "start": "PORT=3011 react-scripts start",
+    "build": "PORT=3011 react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }

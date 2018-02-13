@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="bincik.sk">
+    <serverData>
+      <paths name="bincik.sk">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/sub/gem-css" local="$PROJECT_DIR$/build" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>

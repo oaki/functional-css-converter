@@ -107,7 +107,11 @@ export default class CssManager {
   }
 
   findPropertyValues(property) {
-    const rules = this.getClassesList().filter(rule => rule.property === property);
+    let rules = this.getClassesList()
+      .filter(rule => rule.property === property);
+
+    rules = rules.filter((x, i, a) => a.indexOf(x) == i);
+
     return rules.map(rule => rule.value);
   }
 }

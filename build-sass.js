@@ -3,9 +3,15 @@
  */
 const fse = require('fs-extra');
 const del = require('del');
+const path = require('path');
+
 const nodeSass = require('node-sass');
 const sassPath = process.argv[2];
-const cssTargetPath = './public/assets/css/main.css';
+// console.log(process.args);
+// console.log(process.argv);
+// const sassPath = process.env.SASS_PATH;
+
+const cssTargetPath = `${__dirname}/public/assets/css/main.css`;
 
 function writeFile(filePath, content) {
   console.log('Create the file', filePath);
@@ -21,7 +27,7 @@ function deleteDirs(dirs) {
   return del(dirs).catch(console.error);
 }
 
-deleteDirs([cssTargetPath]).then(() => {
+// deleteDirs([cssTargetPath]).then(() => {
   nodeSass.render({
     file: sassPath
   }, (err, result) => {
@@ -34,4 +40,4 @@ deleteDirs([cssTargetPath]).then(() => {
     return writeFile(cssTargetPath, result.css);
 
   });
-})
+// })

@@ -1,5 +1,5 @@
-import React from 'react';
-import Row from './Row';
+import React from "react";
+import Row from "./Row";
 
 let rowId = 0;
 export default class StyleEditor extends React.Component {
@@ -53,6 +53,10 @@ export default class StyleEditor extends React.Component {
     this.edit(id, {value});
   }
 
+  handleOnChangeMedia = (id, valueToShow) => {
+    this.edit(id, {valueToShow});
+  }
+
   checkIfLastRowIsNotEmpty() {
     const data = this.state.data;
 
@@ -75,39 +79,42 @@ export default class StyleEditor extends React.Component {
     })
 
     return (
-      <div className="style-editor">
-        {classesList && classesList.length > 0 && <div className="row">
 
-          <div className="col">
 
-            <div className="jumbotron">
-              {classesList.map((className, index) => {
-                return <span key={index}>{className.classes.join(' ')} </span>
-              })}
-            </div>
+      <div className="row pt-3">
+        <div className="col-md-8">
+          <span onClick={this.addEmptyRow}>style {String.fromCharCode(123)}</span>
+
+          {this.state.data.map((rowData) => {
+            return <Row key={rowData.id}
+                        id={rowData.id}
+                        showDeleteButton={!!rowData.property && !!rowData.value}
+                        cssManager={this.props.cssManager}
+                        propertyName={rowData.property}
+                        value={rowData.value}
+                        valueToShow={rowData.valueToShow}
+                        classesList={classesList}
+                        handleOnChangeProperty={this.handleOnChangeProperty}
+                        handleOnChangeValue={this.handleOnChangeValue}
+                        handleOnChangeMedia={this.handleOnChangeMedia}
+                        handleRemoveRow={this.handleRemoveRow}
+            />
+          })}
+
+          {String.fromCharCode(125)}
+
+        </div>
+        <div className="col-md-4">
+          <div className="p-3">
+            {classesList && classesList.length > 0 &&
+            classesList.map((className, index) => {
+              return <span key={index}>{className.classes.join(' ').replace('.', '')} </span>
+            })
+            }
           </div>
         </div>
-        }
-
-        <span onClick={this.addEmptyRow}>style {String.fromCharCode(123)}</span>
-
-        {this.state.data.map((rowData) => {
-          return <Row key={rowData.id}
-                      id={rowData.id}
-                      showDeleteButton={!!rowData.property && !!rowData.value}
-                      cssManager={this.props.cssManager}
-                      propertyName={rowData.property}
-                      value={rowData.value}
-                      classesList={classesList}
-                      handleOnChangeProperty={this.handleOnChangeProperty}
-                      handleOnChangeValue={this.handleOnChangeValue}
-                      handleRemoveRow={this.handleRemoveRow}
-          />
-        })}
-
-        {String.fromCharCode(125)}
-
       </div>
+
     )
   }
 

@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
-import './assets/css/App.css';
-import {PrismCode} from './components/PrismCode';
-import StyleEditor from './components/StyleEditor';
-import CssManager from './CssManager';
+import React, {Component} from "react";
+import "./assets/css/App.css";
+import {PrismCode} from "./components/PrismCode";
+import StyleEditor from "./components/StyleEditor";
+import CssManager from "./CssManager";
 require('prismjs/themes/prism.css');
 const beautifyCss = require('js-beautify').css;
 
@@ -75,20 +75,25 @@ class App extends Component {
     return (
       <div className="App ">
         <nav className="navbar navbar-dark bg-dark">
-          <a className="navbar-brand" href="/">Functional css editor</a>
+          <div className="container">
+            <a className="navbar-brand" href="/">GEM functional CSS editor</a>
+          </div>
+
         </nav>
 
         <div className="container-fluid container">
 
           <StyleEditor cssManager={this.cssManager}/>
 
-          <div className="row">
+          <div className="row border mt-3 mb-3"></div>
+
+          <div className="row pt-3">
             <div className="col-lg">
               <div className="form-group">
                 <h4>Find classes definitions </h4>
                 <input className="form-control" onChange={this.handleFindDefinitions}/>
                 <small className="form-text text-muted">e.g.:
-                  <span>md-m-sm m-l-sm tt-u</span>
+                  <span> md-d-b md-m-sm m-l-sm tt-u</span>
                 </small>
               </div>
             </div>
@@ -99,12 +104,9 @@ class App extends Component {
                 {this.state.definitions}
               </PrismCode>
             </div>
-          </div>
 
-
-          <div className="row">
             <div className="col-xl">
-              <h3>Result</h3>
+              <strong>Result</strong>
               <style>
                 {this.state.definitions}
               </style>
@@ -112,26 +114,37 @@ class App extends Component {
                 Lorem ipsum
               </div>
             </div>
+
+
           </div>
 
-          <div className="row">
-            <div className="col-xl">
-                <textarea className="form-control" onChange={this.handleFindClasses}
-                          defaultValue="text-align:left; padding: 0.6rem;
+          <div className="row border mt-3 mb-3"></div>
+
+          <div className="row pt-3">
+            <div className="col-md-6">
+              <h3>Css string</h3>
+              <textarea className="form-control" onChange={this.handleFindClasses}
+                        defaultValue="text-align:left; padding: 0.6rem;
                           font-weight: 600;line-height: 1.5;">
                 </textarea>
             </div>
-          </div>
+            <div className="col-md-6">
 
-          <div className="row">
-            <div className="col-xl">
               <h3>Classes</h3>
               {this.state.classes.map((item, index) => (
-                <span key={index}>{item.classes.join(' ')} </span>
+                <span key={index}>{item.classes.join(' ').replace('.', '')} </span>
               ))}
+
             </div>
           </div>
+
         </div>
+
+        <footer className="footer">
+          <div className="container">
+            <span className="text-muted">Copyright GEM</span>
+          </div>
+        </footer>
       </div>
     );
   }
