@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "GEM CSS",
+  "name": "Converter for functional CSS",
   "icons": [
     {
       "src": "favicon.ico",
